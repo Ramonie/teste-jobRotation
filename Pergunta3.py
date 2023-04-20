@@ -1,40 +1,23 @@
 import xml.etree.ElementTree as ET
 
-# carrega o arquivo XML
-tree = ET.parse('faturamento_diario.xml')
+# parseia o xml e armazena em uma lista de tuplas (dia, valor)
+tree = ET.parse('dados.xml')
 root = tree.getroot()
+faturamento = [(int(row.find('dia').text), float(row.find('valor').text)) for row in root]
 
-# inicializa as variáveis
-soma = 0
-maior_valor = float('-inf')
-menor_valor = float('inf')
-dias_com_faturamento = 0
-dias_sem_faturamento = 0
-# percorre os elementos <dia>
-for dia in root.findall('dia'):
-    # verifica se o dia tem faturamento
-    if dia.text is not None:
-        # converte o valor para float e soma à variável soma
-        valor = float(dia.text)
-        soma += valor
+# calcula o menor e o maior faturamento
+menor_faturamento = min(faturamento, key=lambda x: x[1])
+maior_faturamento = max(faturamento, key=lambda x: x[1])
 
-        # verifica se o valor é maior ou menor que os valores já encontrados
-        if valor > maior_valor:
-            maior_valor = valor
-        if valor < menor_valor:
-            menor_valor = valor
+# calcula a média mensal, ignorando os dias sem faturamento
+faturamento_total = sum([f[1] for f in faturamento if f[1] != 0])
+dias_com_faturamento = len([f for f in faturamento if f[1] != 0])
+media_mensal = faturamento_total / dias_com_faturamento
 
-        # incrementa o contador de dias com faturamento
-        dias_com_faturamento += 1
-    else:
-        # incrementa o contador de dias sem faturamento
-        dias_sem_faturamento += 1
-
-# calcula a média mensal
-media_mensal = soma / dias_com_faturamento
+# conta o número de dias com faturamento acima da média
+dias_acima_da_media = len([f for f in faturamento if f[1] > media_mensal])
 
 # exibe os resultados
-print(f"Maior valor: {maior_valor}")
-print(f"Menor valor: {menor_valor}")
-print(f"Dias sem faturamento: {dias_sem_faturamento}")
-print(f"Número de dias com faturamento acima da média: {sum(float(dia.text) > media_mensal for dia in root.findall('dia') if dia.text is not None)}")
+print(f'Menor faturamento: dia {menor_faturamento[0]}, valor {menor_faturamento[1]}')
+print(f'Maior faturamento: dia {maior_faturamento[0]}, valor {maior_faturamento[1]}')
+print(f'Número de dias com faturamento acima da média: {dias_acima_da_media}')
