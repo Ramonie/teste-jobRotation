@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faturamento>
+  <dia data="2023-04-01">100.50</dia>
+  <dia data="2023-04-02"/>
+  <dia data="2023-04-03"/>
+  <dia data="2023-04-04">75.30</dia>
+  <dia data="2023-04-05">300.25</dia>
+  <dia data="2023-04-06">250.00</dia>
+  <dia data="2023-04-07">175.80</dia>
+  <dia data="2023-04-08">225.50</dia>
+  <dia data="2023-04-09"/>
+  <dia data="2023-04-10"/>
+  <dia data="2023-04-11">275.75</dia>
+  <dia data="2023-04-12">150.00</dia>
+  <dia data="2023-04-13">225.25</dia>
+  <dia data="2023-04-14">100.00</dia>
+  <dia data="2023-04-15">250.50</dia>
+  <dia data="2023-04-16"/>
+  <dia data="2023-04-17"/>
+  <dia data="2023-04-18">300.00</dia>
+  <dia data="2023-04-19">175.25</dia>
+  <dia data="2023-04-20">200.75</dia>
+  <dia data="2023-04-21">150.50</dia>
+  <dia data="2023-04-22">250.25</dia>
+  <dia data="2023-04-23"/>
+  <dia data="2023-04-24"/>
+  <dia data="2023-04-25">175.50</dia>
+  <dia data="2023-04-26">200.25</dia>
+  <dia data="2023-04-27">275.50</dia>
+  <dia data="2023-04-28">150.25</dia>
+</faturamento>
